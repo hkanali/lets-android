@@ -31,6 +31,6 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
 
-        return this.mainActivity.getResources().getString(MainFragmentPagerType.of(position).getNameResouceId());
+        return this.mainActivity.getResources().getString(MainFragmentPagerType.of(position).getNameResourceId());
     }
 }

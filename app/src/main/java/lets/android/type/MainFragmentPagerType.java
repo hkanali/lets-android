@@ -22,7 +22,7 @@ public enum MainFragmentPagerType {
     private Fragment fragment;
 
     @Getter
-    private int nameResouceId;
+    private int nameResourceId;
 
     public static MainFragmentPagerType of(int position) {
 
