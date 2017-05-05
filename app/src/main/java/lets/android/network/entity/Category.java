@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class Category {
+public class Category extends BaseNetworkEntity {
 
     public Long id;
 
