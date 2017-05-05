@@ -1,33 +1,36 @@
 package lets.android.adapter;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import lets.android.fragment.FeedFragment;
+import lets.android.activity.MainActivity;
+import lets.android.type.MainFragmentPagerType;
 
 public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    public MainFragmentPagerAdapter(FragmentManager fm) {
+    private MainActivity mainActivity;
 
-        super(fm);
+    public MainFragmentPagerAdapter(MainActivity mainActivity) {
+
+        super(mainActivity.getSupportFragmentManager());
+        this.mainActivity = mainActivity;
     }
 
     @Override
     public Fragment getItem(int position) {
 
-        return FeedFragment.newInstance();
+        return MainFragmentPagerType.of(position).getFragment();
     }
 
     @Override
     public int getCount() {
 
-        return 3;
+        return MainFragmentPagerType.values().length;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
 
-        return String.valueOf(position);
+        return this.mainActivity.getResources().getString(MainFragmentPagerType.of(position).getNameResouceId());
     }
 }

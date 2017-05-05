@@ -91,10 +91,13 @@ public abstract class BaseFragment<VDB extends ViewDataBinding, RVA extends Base
                                 BaseFragment.this.existNext = false;
                             }
 
-                            RVA recyclerViewAdapter = (RVA) recyclerView.getAdapter();
-                            recyclerViewAdapter.addAll(entityPage.content);
-                            //recyclerView.getAdapter().notifyItemInserted(recyclerViewAdapter.getContent().size() - 1);
-                            recyclerViewAdapter.notifyDataSetChanged();
+                            if (recyclerView.getAdapter() instanceof BaseRecyclerViewAdapter) {
+
+                                RVA recyclerViewAdapter = (RVA) recyclerView.getAdapter();
+                                recyclerViewAdapter.addAll(entityPage.content);
+                                //recyclerView.getAdapter().notifyItemInserted(recyclerViewAdapter.getContent().size() - 1);
+                                recyclerViewAdapter.notifyDataSetChanged();
+                            }
                         }
                     });
         }

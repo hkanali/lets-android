@@ -16,9 +16,11 @@ import lombok.Getter;
 public abstract class BaseRecyclerViewAdapter<E extends BaseNetworkEntity, H extends BaseBindingViewHolder>
         extends RecyclerView.Adapter<H> {
 
+    protected abstract int getLayoutId();
+
     protected abstract H createViewHolder(View view);
 
-    protected abstract void setContent(H holder, int position);
+    protected abstract void setContent(H holder, E entity);
 
     @Getter
     private List<E> content;
@@ -32,14 +34,14 @@ public abstract class BaseRecyclerViewAdapter<E extends BaseNetworkEntity, H ext
     public H onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.content_category, parent, false);
+                .inflate(this.getLayoutId(), parent, false);
         return this.createViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(H holder, int position) {
 
-        this.setContent(holder, position);
+        this.setContent(holder, this.content.get(position));
     }
 
     @Override

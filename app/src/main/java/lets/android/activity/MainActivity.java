@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         this.activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         ViewPager viewPager = this.activityMainBinding.activityMainViewPager;
-        viewPager.setAdapter(new MainFragmentPagerAdapter(super.getSupportFragmentManager()));
+        viewPager.setAdapter(new MainFragmentPagerAdapter(this));
         TabLayout tabLayout = this.activityMainBinding.activityMainTabLayout;
         tabLayout.setupWithViewPager(viewPager);
     }

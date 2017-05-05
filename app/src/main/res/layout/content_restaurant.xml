@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="restaurant"
+            type="lets.android.network.entity.Restaurant" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/content_restaurant_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{restaurant.meta.name}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{restaurant.meta.description}" />
+
+        <!--
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@{restaurant.meta.name}"
+            app:imageUrl="@{restaurant.meta.imageUrls}" />
+            -->
+
+    </LinearLayout>
+</layout>

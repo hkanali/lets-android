@@ -6,14 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import lombok.Getter;
-import lombok.Setter;
 
 public abstract class BaseBindingViewHolder<VDB extends ViewDataBinding> extends RecyclerView.ViewHolder {
 
     @Getter
-    @Setter
     private VDB viewDataBinding;
-
 
     public BaseBindingViewHolder(View itemView) {
 
