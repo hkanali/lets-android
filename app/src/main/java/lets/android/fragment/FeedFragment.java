@@ -1,13 +1,9 @@
 package lets.android.fragment;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-
-import java.util.ArrayList;
 
 import lets.android.R;
 import lets.android.adapter.FeedRecyclerViewAdapter;
@@ -15,6 +11,7 @@ import lets.android.databinding.FragmentFeedBinding;
 import lets.android.network.ApiFactory;
 import lets.android.network.entity.Category;
 import lets.android.network.entity.PageImpl;
+import retrofit2.Response;
 import rx.Observable;
 
 public class FeedFragment extends BaseFragment<FragmentFeedBinding, FeedRecyclerViewAdapter, Category> {
@@ -34,7 +31,7 @@ public class FeedFragment extends BaseFragment<FragmentFeedBinding, FeedRecycler
     }
 
     @Override
-    protected RecyclerView getRecylerView() {
+    protected RecyclerView getRecyclerView() {
 
         return this.viewDataBinding.fragmentFeedRecyclerView;
     }
@@ -42,11 +39,17 @@ public class FeedFragment extends BaseFragment<FragmentFeedBinding, FeedRecycler
     @Override
     protected FeedRecyclerViewAdapter getAdapter() {
 
-        return new FeedRecyclerViewAdapter(new ArrayList<Category>());
+        return new FeedRecyclerViewAdapter();
     }
 
     @Override
-    protected Observable<PageImpl<Category>> getContent(int page) {
+    protected RecyclerView.LayoutManager getLayoutManager() {
+
+        return new GridLayoutManager(super.getContext(), 2);
+    }
+
+    @Override
+    protected Observable<Response<PageImpl<Category>>> getContent(int page) {
 
         return ApiFactory.getRetrofitClient().getCategory(page);
     }

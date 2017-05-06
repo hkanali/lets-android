@@ -5,14 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import lets.android.R;
 import lets.android.network.entity.BaseNetworkEntity;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 public abstract class BaseRecyclerViewAdapter<E extends BaseNetworkEntity, H extends BaseBindingViewHolder>
         extends RecyclerView.Adapter<H> {
 
@@ -23,7 +21,7 @@ public abstract class BaseRecyclerViewAdapter<E extends BaseNetworkEntity, H ext
     protected abstract void setContent(H holder, E entity);
 
     @Getter
-    private List<E> content;
+    private List<E> content = new ArrayList<>();
 
     public boolean addAll(List<E> content) {
 

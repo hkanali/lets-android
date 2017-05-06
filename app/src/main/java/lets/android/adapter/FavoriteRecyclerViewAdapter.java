@@ -2,18 +2,11 @@ package lets.android.adapter;
 
 import android.view.View;
 
-import java.util.List;
-
 import lets.android.R;
 import lets.android.databinding.ContentRestaurantBinding;
 import lets.android.network.entity.Restaurant;
 
 public class FavoriteRecyclerViewAdapter extends BaseRecyclerViewAdapter<Restaurant, FavoriteRecyclerViewAdapter.ContentRestaurantBindingViewHolder> {
-
-    public FavoriteRecyclerViewAdapter(List<Restaurant> content) {
-
-        super(content);
-    }
 
     @Override
     protected ContentRestaurantBindingViewHolder createViewHolder(View view) {
